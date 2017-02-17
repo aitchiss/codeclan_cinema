@@ -1,16 +1,17 @@
 class Film
 
-  attr_accessor :title, :price
+  attr_accessor :title, :price, :max_tickets
   attr_reader :id
 
   def initialize ( options )
     @id = options['id'].to_i if options['id']
     @title = options['title']
     @price = options['price'].to_f
+    @max_tickets = options['max_tickets'].to_i
   end
 
   def save()
-    sql = "INSERT INTO films (title, price) VALUES ('#{@title}', #{@price}) RETURNING * ;"
+    sql = "INSERT INTO films (title, price, max_tickets) VALUES ('#{@title}', #{@price}, #{@max_tickets}) RETURNING * ;"
     film_details = SqlRunner.run(sql)
     film_hash = film_details[0]
     @id = film_hash['id'].to_i
@@ -22,7 +23,7 @@ class Film
   end
 
   def update()
-    sql = "UPDATE films SET (title, price) = ('#{@title}', #{@price}) WHERE id = #{@id}; "
+    sql = "UPDATE films SET (title, price, max_tickets) = ('#{@title}', #{@price}, #{@max_tickets}) WHERE id = #{@id}; "
     SqlRunner.run(sql)
   end
 

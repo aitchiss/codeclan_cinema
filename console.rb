@@ -25,14 +25,16 @@ customer2.save
 
 film1 = Film.new({
   'title' => 'Mighty Ducks',
-  'price' => 6.50
+  'price' => 6.50,
+  'max_tickets' => 2
   })
 
 film1.save
 
 film2 = Film.new({
   'title' => 'Young Guns',
-  'price' => 5.50
+  'price' => 5.50,
+  'max_tickets' => 5
   })
 
 film2.save

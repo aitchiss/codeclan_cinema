@@ -12,7 +12,8 @@ CREATE TABLE customers(
 CREATE TABLE films(
   id SERIAL4 PRIMARY KEY,
   title VARCHAR(255),
-  price DECIMAL(5,2)
+  price DECIMAL(5,2),
+  max_tickets INT4
 );
 
 CREATE TABLE tickets(
