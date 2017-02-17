@@ -9,4 +9,11 @@ class Customer
     @funds = options['funds'].to_f
   end
 
+  def save()
+    sql = "INSERT INTO customers (name, funds) VALUES ('#{@name}', #{@funds}) RETURNING * ;"
+    customer_details = SqlRunner.run(sql)
+    customer_hash = customer_details[0]
+    @id = customer_hash['id'].to_i
+  end
+
 end
