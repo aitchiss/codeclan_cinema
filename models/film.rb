@@ -14,7 +14,11 @@ class Film
     film_details = SqlRunner.run(sql)
     film_hash = film_details[0]
     @id = film_hash['id'].to_i
+  end
 
+  def self.delete_all()
+    sql = "DELETE FROM films;"
+    SqlRunner.run(sql)
   end
 
 end
