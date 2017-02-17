@@ -21,10 +21,18 @@ class Customer
     SqlRunner.run(sql)
   end
 
+
   def self.all()
     sql = "SELECT * FROM customers;"
     customers = Customer.get_many(sql)
     return customers
+  end
+
+  def self.find(id)
+    sql = "SELECT * FROM customers WHERE id = #{id};"
+    customers_details = SqlRunner.run(sql)
+    customer = customers_details[0]
+    return Customer.new(customer)
   end
 
   def self.get_many(sql)
