@@ -27,6 +27,13 @@ class Film
     return films
   end
 
+  def self.find(id)
+    sql = "SELECT * FROM films WHERE id = #{id};"
+    film_details = SqlRunner.run(sql)
+    film_hash = film_details[0]
+    return Film.new(film_hash)
+  end
+
   def self.get_many(sql)
     films_details = SqlRunner.run(sql)
     return films_details.map { |film| Film.new(film) }
