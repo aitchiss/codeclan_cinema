@@ -17,5 +17,7 @@ film1 = Film.new({
   'price' => 6.50
   })
 
+film1.save
+
 binding.pry
 nil

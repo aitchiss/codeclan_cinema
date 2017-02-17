@@ -9,4 +9,12 @@ class Film
     @price = options['price'].to_f
   end
 
+  def save()
+    sql = "INSERT INTO films (title, price) VALUES ('#{@title}', #{@price}) RETURNING * ;"
+    film_details = SqlRunner.run(sql)
+    film_hash = film_details[0]
+    @id = film_hash['id'].to_i
+
+  end
+
 end
