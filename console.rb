@@ -39,28 +39,32 @@ film2.save
 
 ticket1 = Ticket.new({
   'customer_id' => customer1.id,
-  'film_id' => film1.id
+  'film_id' => film1.id,
+  'time' => "20:30"
   })
 
 ticket1.save
 
 ticket2 = Ticket.new({
   'customer_id' => customer2.id,
-  'film_id' => film2.id
+  'film_id' => film2.id,
+  'time' => "19:30"
   })
 
 ticket2.save
 
 ticket3 = Ticket.new({
   'customer_id' => customer1.id,
-  'film_id' => film2.id
+  'film_id' => film2.id,
+  'time' => "19:30"
   })
 
 ticket3.save
 
 ticket4 = Ticket.new({
   'customer_id' => customer2.id,
-  'film_id' => film2.id
+  'film_id' => film2.id,
+  'time' => "12:30"
   })
 ticket4.save
 

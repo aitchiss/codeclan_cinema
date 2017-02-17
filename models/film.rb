@@ -26,6 +26,15 @@ class Film
     SqlRunner.run(sql)
   end
 
+  def times()
+    sql = "SELECT * FROM tickets WHERE film_id = #{@id};"
+    tickets = Ticket.get_many(sql)
+    times = []
+    tickets.each { |ticket| times << ticket.time }
+    return times.uniq
+
+  end
+
   def tickets()
     sql = "SELECT * FROM tickets WHERE film_id = #{@id};"
     tickets = Ticket.get_many(sql)
