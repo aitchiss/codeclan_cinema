@@ -21,6 +21,11 @@ class Ticket
     SqlRunner.run(sql)
   end
 
+  def update()
+    sql = "UPDATE tickets SET (customer_id, film_id) = (#{@customer_id}, #{@film_id}) WHERE id = #{@id}; "
+    SqlRunner.run(sql)
+  end
+
   def self.find(id)
     sql = "SELECT * FROM tickets WHERE id = #{id};"
     ticket_details = SqlRunner.run(sql)
