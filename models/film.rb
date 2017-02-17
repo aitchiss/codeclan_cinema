@@ -26,6 +26,12 @@ class Film
     SqlRunner.run(sql)
   end
 
+  def tickets()
+    sql = "SELECT * FROM tickets WHERE film_id = #{@id};"
+    tickets = Ticket.get_many(sql)
+    return tickets
+  end
+
   def self.all()
     sql = "SELECT * FROM films;"
     films = Film.get_many(sql)
