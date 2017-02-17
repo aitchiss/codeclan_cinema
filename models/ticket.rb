@@ -9,4 +9,11 @@ class Ticket
     @film_id = options['film_id'].to_i
   end
 
+  def save()
+    sql = "INSERT INTO tickets (customer_id, film_id) VALUES (#{@customer_id}, #{@film_id}) RETURNING * ;"
+    ticket_details = SqlRunner.run(sql)
+    ticket_hash = ticket_details[0]
+    @id = ticket_hash['id'].to_i
+  end
+
 end
