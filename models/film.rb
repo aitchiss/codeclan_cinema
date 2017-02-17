@@ -32,6 +32,15 @@ class Film
     times = []
     tickets.each { |ticket| times << ticket.time }
     return times.uniq
+  end
+
+  def busiest_screening_time()
+    sql = "SELECT * FROM tickets WHERE film_id = #{@id} GROUP BY time, tickets.id ORDER BY COUNT(*) DESC LIMIT 1;"
+    result = SqlRunner.run(sql)
+    ticket = Ticket.new(result[0])
+    return ticket.time
+
+
 
   end
 
