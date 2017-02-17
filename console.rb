@@ -5,6 +5,7 @@ require_relative('./models/film.rb')
 require_relative('./models/ticket.rb')
 require_relative('./db/sql_runner.rb')
 
+Customer.delete_all
 
 customer1 = Customer.new({
   'name' => "Suzanne",
