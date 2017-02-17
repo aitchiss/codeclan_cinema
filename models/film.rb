@@ -61,6 +61,7 @@ class Film
     return Film.new(film_hash)
   end
 
+
   def self.get_many(sql)
     films_details = SqlRunner.run(sql)
     return films_details.map { |film| Film.new(film) }

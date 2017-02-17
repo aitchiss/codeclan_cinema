@@ -35,6 +35,17 @@ class Customer
     return tickets.count
   end
 
+  def buy_ticket(film)
+    ticket = Ticket.new({
+      'customer_id' => @id,
+      'film_id' => film.id
+      })
+    ticket.save
+    film_object = Film.find(film.id)
+    film_price = film_object.price
+    @funds -= film_price
+  end
+
   def films()
     sql = "SELECT films.* FROM films INNER JOIN
           tickets ON tickets.film_id = films.id
