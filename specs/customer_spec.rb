@@ -66,4 +66,8 @@ class TestCustomer < MiniTest::Test
     assert_equal(3, @customer1.count_tickets)
   end
 
+  def test_count_films
+    assert_equal(2, @customer1.count_films)
+  end
+
 end
