@@ -31,6 +31,10 @@ class Customer
     return Ticket.get_many(sql)
   end
 
+  def count_tickets()
+    return tickets.count
+  end
+
 
   def self.all()
     sql = "SELECT * FROM customers;"
