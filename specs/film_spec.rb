@@ -25,6 +25,12 @@ class TestFilm < MiniTest::Test
       })
     @customer2.save
 
+    @customer3 = Customer.new({
+      'name' => "David",
+      'funds' => 10.00
+      })
+    @customer3.save
+
     @film1 = Film.new({
       'title' => 'Mighty Ducks',
       'price' => 6.50
@@ -56,7 +62,7 @@ class TestFilm < MiniTest::Test
     @ticket3.save
   end
 
-  def test_count_tickets_works_for_film
+  def test_count_tickets
     assert_equal(2, @film2.count_tickets)
   end
 
@@ -64,6 +70,19 @@ class TestFilm < MiniTest::Test
     @ticket1.film_id = @film2.id
     @ticket1.update
     assert_equal(3, @film2.count_tickets)
+  end
+
+  def test_count_customers
+    assert_equal(2, @film2.count_customers)
+  end
+
+  def test_count_customers_increments_for_new_customers
+    @ticket4 = Ticket.new({
+      'customer_id' => @customer3.id,
+      'film_id' => @film2.id
+      })
+    @ticket4.save
+    assert_equal(3, @film2.count_customers)
   end
 
 end
