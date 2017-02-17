@@ -26,6 +26,11 @@ class Customer
     SqlRunner.run(sql)
   end
 
+  def tickets()
+    sql = "SELECT * FROM tickets WHERE customer_id = #{@id};"
+    return Ticket.get_many(sql)
+  end
+
 
   def self.all()
     sql = "SELECT * FROM customers;"
