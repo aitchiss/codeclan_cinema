@@ -7,6 +7,7 @@ require_relative('./db/sql_runner.rb')
 
 Customer.delete_all
 Film.delete_all
+Ticket.delete_all
 
 customer1 = Customer.new({
   'name' => "Suzanne",
