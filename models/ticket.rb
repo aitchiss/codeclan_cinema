@@ -16,6 +16,11 @@ class Ticket
     @id = ticket_hash['id'].to_i
   end
 
+  def delete()
+    sql = "DELETE FROM tickets WHERE id = #{@id};"
+    SqlRunner.run(sql)
+  end
+
   def self.delete_all()
     sql = "DELETE FROM tickets;"
     SqlRunner.run(sql)
