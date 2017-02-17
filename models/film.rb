@@ -32,6 +32,10 @@ class Film
     return tickets
   end
 
+  def count_tickets()
+    return tickets.count
+  end
+
   def self.all()
     sql = "SELECT * FROM films;"
     films = Film.get_many(sql)
