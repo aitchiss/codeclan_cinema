@@ -52,6 +52,14 @@ class Film
     return tickets.count
   end
 
+  def tickets_by_time(time)
+    time.gsub!(".", ":") if time.include?(".")
+    time << ":00" unless time.include?(":")
+    sql = "SELECT * FROM tickets where film_id = #{@id} AND time = '#{time}';"
+    tickets = Ticket.get_many(sql)
+    return tickets
+  end
+
   def customers()
     sql = "SELECT customers.* FROM customers INNER JOIN
           tickets ON tickets.customer_id = customers.id
