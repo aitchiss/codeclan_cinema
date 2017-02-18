@@ -36,12 +36,15 @@ class Customer
   end
 
   def buy_ticket(film)
+    film_object = Film.find(film.id)
+    if (film_object.count_tickets + 1) > film_object.max_tickets
+      return "Sorry, no tickets left"
+    end
     ticket = Ticket.new({
       'customer_id' => @id,
       'film_id' => film.id
       })
     ticket.save
-    film_object = Film.find(film.id)
     film_price = film_object.price
     @funds -= film_price
   end
