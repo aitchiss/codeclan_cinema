@@ -38,6 +38,7 @@ class Customer
   def buy_ticket(film, time)
     film_object = Film.find(film.id)
     return "Sorry, no tickets left" if (film_object.count_tickets + 1) > film_object.max_tickets
+    time.gsub!(".", ":") if time.include?(".")
     ticket = Ticket.new({
       'customer_id' => @id,
       'film_id' => film.id,
