@@ -35,18 +35,16 @@ class Customer
     return tickets.count
   end
 
-  def buy_ticket(film)
+  def buy_ticket(film, time)
     film_object = Film.find(film.id)
-    if (film_object.count_tickets + 1) > film_object.max_tickets
-      return "Sorry, no tickets left"
-    end
+    return "Sorry, no tickets left" if (film_object.count_tickets + 1) > film_object.max_tickets
     ticket = Ticket.new({
       'customer_id' => @id,
-      'film_id' => film.id
+      'film_id' => film.id,
+      'time' => time
       })
     ticket.save
-    film_price = film_object.price
-    @funds -= film_price
+    @funds -= film_object.price
   end
 
   def films()
@@ -77,7 +75,6 @@ class Customer
   def self.get_many(sql)
     customers_details = SqlRunner.run(sql)
     return customers_details.map { |customer| Customer.new(customer) }
-  
   end
 
   def self.delete_all()

@@ -40,9 +40,6 @@ class Film
     result = SqlRunner.run(sql)
     ticket = Ticket.new(result[0])
     return ticket.time
-
-
-
   end
 
   def tickets()
