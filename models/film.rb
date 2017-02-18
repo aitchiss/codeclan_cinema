@@ -60,6 +60,10 @@ class Film
     return tickets
   end
 
+  def count_tickets_by_time(time)
+    return tickets_by_time(time).count
+  end
+
   def customers()
     sql = "SELECT customers.* FROM customers INNER JOIN
           tickets ON tickets.customer_id = customers.id
