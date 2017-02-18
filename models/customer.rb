@@ -47,6 +47,7 @@ class Customer
       })
     ticket.save
     @funds -= film_object.price
+    return "Thank you #{@name}. You have successfully purchased a ticket for #{film.title} at #{time}."
   end
 
   def films()
